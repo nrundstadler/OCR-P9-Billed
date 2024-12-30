@@ -20,7 +20,6 @@ const row = bill => {
 };
 
 const rows = data => {
-  console.log(data);
   return data && data.length
     ? data
         // Fix bills order: sort bills by date in descending order
