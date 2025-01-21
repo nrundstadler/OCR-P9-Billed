@@ -102,7 +102,7 @@ describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page and submit the form", () => {
     test("Then it should generate a new bill", async () => {
       window.onNavigate(ROUTES_PATH.NewBill);
-      jest.spyOn(mockStore.bills(), "update");
+      const updateBillsSpy = jest.spyOn(mockStore.bills(), "update");
 
       new NewBill({
         document,
@@ -140,7 +140,7 @@ describe("Given I am connected as an employee", () => {
       const submitButton = screen.getByRole("button");
       userEvent.click(submitButton);
 
-      expect(mockStore.bills().update).toHaveBeenCalled();
+      expect(updateBillsSpy).toHaveBeenCalled();
       expect(screen.getByText("Mes notes de frais")).toBeTruthy();
     });
   });
